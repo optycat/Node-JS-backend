@@ -28,7 +28,7 @@ router.delete('/delete', async function (req, res, next) {
     const id = req.body;
 
     try {
-        const mongoClient = new MongoClient("mongodb+srv://admin:admin@clustertest.p5xn7gf.mongodb.net/boardLikeTrello?retryWrites=true&w=majority");
+        const mongoClient = new MongoClient(process.env.DB_URL);
         await mongoClient.connect();
 
         const db = mongoClient.db("boardLikeTrello");
@@ -51,7 +51,7 @@ router.post('/add', async function (req, res, next) {
     const list = req.body;
 
     try {
-        const mongoClient = new MongoClient("mongodb+srv://admin:admin@clustertest.p5xn7gf.mongodb.net/boardLikeTrello?retryWrites=true&w=majority");
+        const mongoClient = new MongoClient(process.env.DB_URL);
         await mongoClient.connect();
 
         const db = mongoClient.db("boardLikeTrello");
