@@ -6,7 +6,7 @@ require('dotenv').config();
 
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema({ title: String }, { versionKey: false });
+const taskSchema = new Schema({ taskTitle: String, listId: Number, postedDate: Date }, { versionKey: false });
 const Task = mongoose.model("Task", taskSchema);
 
 
@@ -28,7 +28,7 @@ router.delete('/delete', async function (req, res, next) {
     const id = req.body;
 
     try {
-        const mongoClient = new MongoClient("mongodb+srv://admin:admin@clustertest.p5xn7gf.mongodb.net/boardLikeTrello?retryWrites=true&w=majority");
+        const mongoClient = new MongoClient(process.env.DB_URL);
         await mongoClient.connect();
 
         const db = mongoClient.db("boardLikeTrello");
