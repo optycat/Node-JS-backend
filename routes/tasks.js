@@ -6,9 +6,8 @@ require('dotenv').config();
 
 const Schema = mongoose.Schema;
 
-const taskSchema = new Schema({ taskTitle: String, listId: Number, postedDate: String }, { versionKey: false });
+const taskSchema = new Schema({ taskTitle: String, listId: String, postedDate: String }, { versionKey: false });
 const Task = mongoose.model("Task", taskSchema);
-
 
 router.get('/getAll', async function (req, res, next) {
 
