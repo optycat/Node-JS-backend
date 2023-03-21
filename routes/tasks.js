@@ -18,8 +18,8 @@ router.get('/getAll', async function (req, res, next) {
         return console.log(err);
     }
 
-    const users = await Task.find({});
-    res.send(users);
+    const tasks = await Task.find({});
+    res.send(tasks);
 });
 
 router.delete('/delete', async function (req, res, next) {
@@ -60,7 +60,8 @@ router.post('/add', async function (req, res, next) {
         return console.log(err);
     }
 
-    res.send(task);
+    const added = await Task.find({postedDate: String(task.postedDate)});
+    res.send(added);
 });
 
 

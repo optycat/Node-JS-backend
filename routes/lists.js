@@ -19,8 +19,8 @@ router.get('/getAll', async function (req, res, next) {
         return console.log(err);
     }
 
-    const users = await List.find({});
-    res.send(users);
+    const lists = await List.find({});
+    res.send(lists);
 });
 
 router.delete('/delete', async function (req, res, next) {
@@ -62,7 +62,8 @@ router.post('/add', async function (req, res, next) {
         return console.log(err);
     }
 
-    res.send(list);
+    const added = await List.find({title: String(list.title)});
+    res.send(added);
 });
 
 
